@@ -1,5 +1,7 @@
 valid_full_centers = h5read('drones_valid.h5','/center');
 valid_full_scales = h5read('drones_valid.h5','/scale');
+valid_full_rotations = h5read('drones_valid.h5','/rotation');
+valid_full_translations = h5read('drones_valid.h5','/translation');
 names_file = fopen('drones_valid.txt');
 data_names = textscan(names_file,'%s');
 fclose(names_file);
@@ -21,6 +23,8 @@ annot = struct();
 annot.imgname = names_full_nojpg(1:nb_samples);
 annot.center = permute(valid_full_centers(:,1:nb_samples),[2 1]);
 annot.scale = valid_full_scales(1:nb_samples);
+annot.translation = permute(valid_full_translations(:,1:nb_samples),[2 1]);
+annot.rotation = permute(valid_full_rotations(:,:,1:nb_samples),[3 1 2]);
 annot.K = intrinsics;
 
 
