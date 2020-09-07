@@ -1,0 +1,6 @@
+sourceFilePath = '../object3d_drones/demo/gascan/annot/valid.mat';
+load(sourceFilePath);
+imgname_tmp = annot.imgname;
+center_tmp = annot.center;
+scale_tmp = annot.scale;
+n=size(imgname_tmp,1);
